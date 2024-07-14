@@ -9,21 +9,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-
 public class FanCodeTestFile {
     private static final String BASE_URL = "https://jsonplaceholder.typicode.com"; 
 
     @Test
     public void testFanCodeUsersTodoCompletion() {
-        // Fetch all users
+        // Fetch all users. We are providing Base URL and hitting GET request.
         Response usersResponse = RestAssured.get(BASE_URL + "/users");
         Assert.assertEquals(usersResponse.getStatusCode(), 200);
         ExtentReportManager.logInfoDetails("Response Status code is : " + Integer.toString(usersResponse.getStatusCode()));
-        //ExtentReportManager.logInfoDetails("Response Body is : ");
-        //ExtentReportManager.logJson(usersResponse.getBody().prettyPrint());
         List<Map<String, Object>> users = usersResponse.jsonPath().getList("");
-        //System.out.println(users);
-        // Filter users from city "FanCode"
+        
+        // Filter users from city "FanCode". Here parameters such as Latitude and Longitude are used to get the location of 
+        // city Fancode. Then after they are stored in List.
         List<Map<String, Object>> fanCodeUsers = users.stream()
                     .filter(user -> {
                         @SuppressWarnings("unchecked")
@@ -36,8 +34,7 @@ public class FanCodeTestFile {
                     })
                     .collect(Collectors.toList());
         
-        //System.out.println(fanCodeUsers.size());       
-        // Verify each user has more than 50% of todos completed
+        // Verify each user has more than 50% of todos completed. 
         for (Map<String, Object> user : fanCodeUsers) {
             int userId = (Integer) user.get("id");
             // Fetch todos for the user
