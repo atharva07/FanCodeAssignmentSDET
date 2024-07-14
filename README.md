@@ -56,3 +56,4 @@ Following things need to done
 2. Create a maven project and import this project.
 3. Hit the command "mvn clean test"
 4. Check for the report in reports folder which will be generated after test execution.
+
