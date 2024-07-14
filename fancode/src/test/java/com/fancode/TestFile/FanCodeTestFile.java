@@ -19,8 +19,8 @@ public class FanCodeTestFile {
         Response usersResponse = RestAssured.get(BASE_URL + "/users");
         Assert.assertEquals(usersResponse.getStatusCode(), 200);
         ExtentReportManager.logInfoDetails("Response Status code is : " + Integer.toString(usersResponse.getStatusCode()));
-        ExtentReportManager.logInfoDetails("Response Body is : ");
-        ExtentReportManager.logJson(usersResponse.getBody().prettyPrint());
+        //ExtentReportManager.logInfoDetails("Response Body is : ");
+        //ExtentReportManager.logJson(usersResponse.getBody().prettyPrint());
         List<Map<String, Object>> users = usersResponse.jsonPath().getList("");
         //System.out.println(users);
         // Filter users from city "FanCode"
@@ -43,8 +43,8 @@ public class FanCodeTestFile {
             // Fetch todos for the user
             Response todosResponse = RestAssured.get(BASE_URL + "/todos?userId=" + userId);
             Assert.assertEquals(todosResponse.getStatusCode(), 200);
-            ExtentReportManager.logInfoDetails("Todo Response Body is : ");
-            ExtentReportManager.logJson(todosResponse.getBody().prettyPrint());
+            //ExtentReportManager.logInfoDetails("Todo Response Body is : ");
+            //ExtentReportManager.logJson(todosResponse.getBody().prettyPrint());
             List<Map<String, Object>> todos = todosResponse.jsonPath().getList("");
             
             // Calculate completed percentage
@@ -56,6 +56,7 @@ public class FanCodeTestFile {
             // Print completed percentage to console
             System.out.println("User ID: " + userId + " - Completed Task Percentage: " + completedPercentage + "%");
 
+            ExtentReportManager.logInfoDetails("User ID : " + userId);
             ExtentReportManager.logInfoDetails("Completed Task Percentage : " + Double.toString(completedPercentage));
             // Assert the completed percentage is greater than 50%
             Assert.assertTrue(completedPercentage > 50, "User ID: " + userId + " has less than 50% completed tasks.");
