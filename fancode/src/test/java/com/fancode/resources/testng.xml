@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="RestAssuredTestSuite" verbose="1" >
+    <listeners>
+        <listener class-name="com.fancode.reporting.Setup"></listener>
+    </listeners>
+    <test name="FanCodeTestFile">
+        <classes>
+            <class name="com.fancode.TestFile.FanCodeTestFile"/>
+        </classes>
+    </test>
+</suite>
