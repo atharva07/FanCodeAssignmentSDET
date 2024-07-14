@@ -17,7 +17,8 @@ Following things need to done
 1. Create a Maven Project.
 2. In POM.xml file add all the dependencies which are going to need in this project.
 
-```<dependency>
+```
+<dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
@@ -40,7 +41,8 @@ Following things need to done
       <groupId>com.aventstack</groupId>
       <artifactId>extentreports</artifactId>
       <version>5.1.2</version>
-    </dependency>```
+    </dependency>
+```
 
 3. After Adding the dependencies, Extent Report setup is done. Where we are creating utility functions like Setup.java for creating report file and logging activities. Other utility function we created is ExtentReportManager.java.
 
